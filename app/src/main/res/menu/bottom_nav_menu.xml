@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <item android:title="Home"
+        android:icon="@drawable/ihome_icone"
+        android:id="@+id/Home"/>
+    <item android:title="My CV"
+        android:icon="@drawable/assignment"
+        android:id="@+id/Mycv"/>
+    <item android:title="My Account"
+        android:icon="@drawable/account_icon"
+        android:id="@+id/MyAccount"/>
+</menu>

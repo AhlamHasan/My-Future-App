@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyCVFragment">
+
+    <FrameLayout
+        android:id="@+id/container_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/ED_edit_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_details"
+                android:fontFamily="@font/raleway_bold"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="20dp"/>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                card_view:cardUseCompatPadding="true"
+                card_view:cardElevation="6dp"
+                app:cardBackgroundColor="@android:color/white"
+                android:background="@android:color/white">
+
+                <Button
+                    android:id="@+id/btn_personal_detail"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/black"
+                    app:icon="@drawable/ic_personal"
+                    app:iconTint="@android:color/transparent"
+                    app:iconTintMode="add"
+                    app:iconGravity="end"
+                    android:text="@string/personal_details"
+                    android:gravity="center_vertical"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                card_view:cardUseCompatPadding="true"
+                card_view:cardElevation="6dp"
+                app:cardBackgroundColor="@android:color/white"
+                android:background="@android:color/white">
+
+                <Button
+                    android:id="@+id/btn_educational_detail"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/black"
+                    app:icon="@drawable/ic_education"
+                    app:iconTint="@android:color/transparent"
+                    app:iconTintMode="add"
+                    app:iconGravity="end"
+                    android:onClick="eduPage"
+                    android:text="@string/educational_details"
+                    android:gravity="center_vertical"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="6dp"
+                card_view:cardUseCompatPadding="true"
+                card_view:cardElevation="6dp"
+                app:cardBackgroundColor="@android:color/white"
+                android:background="@android:color/white">
+
+                <Button
+                    android:id="@+id/btn_experience_detail"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/black"
+                    app:icon="@drawable/ic_experience"
+                    app:iconTint="@android:color/transparent"
+                    app:iconTintMode="add"
+                    app:iconGravity="end"
+                    android:text="@string/experience"
+                    android:gravity="center_vertical"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                card_view:cardUseCompatPadding="true"
+                card_view:cardElevation="6dp"
+                app:cardBackgroundColor="@android:color/white"
+                android:background="@android:color/white">
+
+                <Button
+                    android:id="@+id/btn_skill_detail"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/black"
+                    app:icon="@drawable/ic_skill"
+                    app:iconTint="@android:color/transparent"
+                    app:iconTintMode="add"
+                    app:iconGravity="end"
+                    android:text="@string/skills"
+                    android:gravity="center_vertical" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                card_view:cardUseCompatPadding="true"
+                card_view:cardElevation="6dp"
+                app:cardBackgroundColor="@android:color/white"
+                android:background="@android:color/white">
+
+                <Button
+                    android:id="@+id/btn_objective_detail"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/black"
+                    app:icon="@drawable/ic_objective"
+                    app:iconTint="@android:color/transparent"
+                    app:iconTintMode="add"
+                    app:iconGravity="end"
+                    android:text="@string/objective"
+                    android:gravity="center_vertical"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                card_view:cardUseCompatPadding="true"
+                card_view:cardElevation="6dp"
+                app:cardBackgroundColor="@android:color/white"
+                android:background="@android:color/white">
+
+                <Button
+                    android:id="@+id/btn_project_detail"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/black"
+                    app:icon="@drawable/ic_project"
+                    app:iconTint="@android:color/transparent"
+                    app:iconTintMode="add"
+                    app:iconGravity="end"
+                    android:text="@string/projects"
+                    android:gravity="center_vertical" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/view_cv_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/view_cv"
+                android:textSize="20sp"
+                app:icon="@drawable/ic_remove_red_eye_black_24dp"
+                app:iconGravity="textStart"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
