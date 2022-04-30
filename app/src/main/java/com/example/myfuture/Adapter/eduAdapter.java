@@ -57,7 +57,7 @@ public class eduAdapter extends RecyclerView.Adapter<eduAdapter.MyViewHolder> {
 
         Bundle bundle = new Bundle();
         bundle.putString("degree", eModel.getDegree());
-        bundle.putString("university", eModel.getUni());
+        bundle.putString("University", eModel.getDegree2());
         bundle.putString("grade", eModel.getGrade());
         bundle.putString("year", eModel.getYear());
         bundle.putString("id", eModel.eduID);
@@ -74,10 +74,10 @@ public class eduAdapter extends RecyclerView.Adapter<eduAdapter.MyViewHolder> {
         eduModel emodel = eduList.get(position); // to return correct item
 
         holder.degree.setText(emodel.getDegree());
-        holder.uni.setText(emodel.getUni());
+        holder.degree2.setText(emodel.getDegree2());
         holder.grade.setText(emodel.getGrade());
         holder.year.setText(emodel.getYear());
-        System.out.println(emodel.getUni() +" "+emodel.getDegree());
+        System.out.println(emodel.getDegree2() +" "+emodel.getDegree());
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,14 +120,14 @@ public class eduAdapter extends RecyclerView.Adapter<eduAdapter.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        EditText degree,uni,grade,year;
+        EditText degree,degree2,grade,year;
         Button edit,delete;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             degree = itemView.findViewById(R.id.edu_degree);
-            uni = itemView.findViewById(R.id.edu_uniS);
+            degree2 = itemView.findViewById(R.id.edu_degree2);
             grade = itemView.findViewById(R.id.edu_grade);
             year = itemView.findViewById(R.id.edu_year);
             edit = itemView.findViewById(R.id.edu_edit);
