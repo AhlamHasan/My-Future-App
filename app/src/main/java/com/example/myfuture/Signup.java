@@ -10,11 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,30 +55,25 @@ public class Signup extends AppCompatActivity {
             return;
         }
 
-        Map<String, Object> dataToSave = new HashMap<>();
-        dataToSave.put("First Name", First_name);
-        dataToSave.put("Last Name",Last_name);
-        dataToSave.put("Email", strEmail);
-        dataToSave.put("Password", strPassword);
-        dataToSave.put("Point", 0);
-        String id = db.collection("collection_name").document().getId();
-        System.out.println(id);
-        db.collection("Users").add(dataToSave).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        db.collection("Users").whereEqualTo("Email", strEmail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                UID=documentReference.getId();
-            }
-        })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    if(task.getResult().isEmpty()){
+                        SaveUser();
+                    }else{
+                        Email.setError("Email account is exist ");
+                        Log.d(TAG, "Email account is already exist ");
                     }
-                });
 
-        Intent i=new Intent(Signup.this,HomeActivity.class);
-        startActivity(i);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, " onFailure "+ e);
+            }
+        });
     }
 
     private boolean validateFirstName(){
@@ -137,5 +135,34 @@ public class Signup extends AppCompatActivity {
             Password.setErrorEnabled(false);
             return true;
         }
+    }
+
+    private void SaveUser(){
+
+        Map<String, Object> dataToSave = new HashMap<>();
+        dataToSave.put("First Name", First_name);
+        dataToSave.put("Last Name", Last_name);
+        dataToSave.put("Email", strEmail);
+        dataToSave.put("Password", strPassword);
+        dataToSave.put("Point", 0);
+        String id = db.collection("collection_name").document().getId();
+        System.out.println(id);
+        db.collection("Users").add(dataToSave).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                UID = documentReference.getId();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error adding document", e);
+            }
+        });
+
+        Intent i = new Intent(Signup.this, HomeActivity.class);
+        startActivity(i);
+
+
     }
 }
