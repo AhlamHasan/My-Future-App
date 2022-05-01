@@ -76,6 +76,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    public void proPage (View view){
+        Intent i=new Intent(HomeActivity.this,project.class);
+        startActivity(i);
+
+    }
+
     public void progPlans (View view){
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProgPlan()).commit();
 
