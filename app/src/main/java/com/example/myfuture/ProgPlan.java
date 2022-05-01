@@ -2,15 +2,11 @@ package com.example.myfuture;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import android.renderscript.ScriptGroup;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,11 +15,15 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,9 +38,10 @@ public class ProgPlan extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-    public  CheckBox cb1 ;
+    public  CheckBox cb1;
     public  CheckBox cb2;
     public  CheckBox cb3;
+
 
     private View view;
 
@@ -50,6 +51,7 @@ public class ProgPlan extends Fragment {
 
 
     public ProgPlan() {
+
 
         // Required empty public constructor
     }
@@ -83,6 +85,56 @@ public class ProgPlan extends Fragment {
 
     }
 
+    public void retrieveData() {
+
+        firestore.collection("Users").document(Signup.UID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null) {
+
+                        int p1 = document.getLong("programming1-ch").intValue();
+                        int p2 = document.getLong("programming2-ch").intValue();
+                        int p3 = document.getLong("programming3-ch").intValue();
+                        if (p1 == 1) {
+                            cb1.setChecked(true);
+                            cb1.setEnabled(false);
+
+                            if (p2 == 1) {
+                                cb2.setChecked(true);
+                                cb2.setEnabled(false);
+                            } else{
+                                cb2.setChecked(false);
+                                if (p1 == 1) {
+                                    cb2.setEnabled(true);
+                                }
+
+                            }
+
+                            if (p3 == 1) {
+                                cb3.setChecked(true);
+                                cb3.setEnabled(false);
+                            } else{
+                                cb3.setChecked(false);
+                                if (p2 == 1) {
+                                    cb3.setEnabled(true);
+                                }
+
+                            }
+                        }
+
+                    }
+                    else {
+                        Log.d("LOGGER", "No such document");
+                    }
+                } else {
+                    Log.d("LOGGER", "get failed with ", task.getException());
+                }
+            }
+        });
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,10 +145,12 @@ public class ProgPlan extends Fragment {
         cb2 = (CheckBox) view.findViewById(R.id.cb2);
         cb3 = (CheckBox) view.findViewById(R.id.cb3);
 
-        cb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                cb2.setEnabled(true);
+        retrieveData();
+
+         cb1.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setTitle("Certification Credential");
                 final EditText input = new EditText(view.getContext());
@@ -106,8 +160,39 @@ public class ProgPlan extends Fragment {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if(input.getText().toString()!= null) {
+                        if(!input.getText().toString().equals("")) {
+                            System.out.println("input "+input.getText().toString());
+
+                            firestore.collection("Users").document(Signup.UID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        DocumentSnapshot document = task.getResult();
+                                        if (document != null) {
+                                            int p = document.getLong("Point").intValue();
+                                            AccountFragment.points = p;
+
+                                        } else {
+                                            Log.d("LOGGER", "No such document");
+                                        }
+                                    } else {
+                                        Log.d("LOGGER", "get failed with ", task.getException());
+                                    }
+                                }
+                            });
+
                             AccountFragment.points+=20;
+                            firestore.collection("Users").document(Signup.UID).update("Point",AccountFragment.points);
+                            firestore.collection("Users").document(Signup.UID).update("programming1-ch",1);
+                            cb1.setChecked(true);
+                            cb1.setEnabled(false);
+                            cb2.setEnabled(true);
+                            Toast.makeText(view.getContext(),"Congrats! You're brilliant", Toast.LENGTH_SHORT).show();
+                        }else{
+                            firestore.collection("Users").document(Signup.UID).update("programming1-ch",0);
+                            cb1.setChecked(false);
+                            cb2.setEnabled(false);
+
                         }
                     }
                 });
@@ -122,15 +207,128 @@ public class ProgPlan extends Fragment {
                 });
 
                 builder.show();
+             }
+         });
 
+         cb2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle("Certification Credential");
+                final EditText input = new EditText(view.getContext());
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(input.getText().toString()!= null) {
+
+                            firestore.collection("Users").document(Signup.UID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        DocumentSnapshot document = task.getResult();
+                                        if (document != null) {
+                                            int p = document.getLong("Point").intValue();
+                                            AccountFragment.points = p;
+
+                                        } else {
+                                            Log.d("LOGGER", "No such document");
+                                        }
+                                    } else {
+                                        Log.d("LOGGER", "get failed with ", task.getException());
+                                    }
+                                }
+                            });
+
+                            AccountFragment.points+=20;
+                            firestore.collection("Users").document(Signup.UID).update("Point",AccountFragment.points);
+                            firestore.collection("Users").document(Signup.UID).update("programming2-ch",1);
+                            cb2.setChecked(true);
+                            cb2.setEnabled(false);
+                            cb3.setEnabled(true);
+                            Toast.makeText(view.getContext(),"Congrats! You're brilliant", Toast.LENGTH_SHORT).show();
+                        }else{
+                            firestore.collection("Users").document(Signup.UID).update("programming2-ch",0);
+                            cb2.setChecked(false);
+                            cb3.setEnabled(false);
+
+                        }
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        cb2.setChecked(false);
+                        cb3.setEnabled(false);
+                        dialogInterface.cancel();
+                    }
+                });
+
+                builder.show();
             }
         });
-        cb2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                cb3.setEnabled(true);
-                System.out.println("C "+cb3);
 
+         cb3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle("Certification Credential");
+                final EditText input = new EditText(view.getContext());
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(input.getText().toString()!= null) {
+
+                            firestore.collection("Users").document(Signup.UID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        DocumentSnapshot document = task.getResult();
+                                        if (document != null) {
+                                            int p = document.getLong("Point").intValue();
+                                            AccountFragment.points = p;
+
+                                        } else {
+                                            Log.d("LOGGER", "No such document");
+                                        }
+                                    } else {
+                                        Log.d("LOGGER", "get failed with ", task.getException());
+                                    }
+                                }
+                            });
+
+                            AccountFragment.points+=20;
+                            firestore.collection("Users").document(Signup.UID).update("Point",AccountFragment.points);
+                            firestore.collection("Users").document(Signup.UID).update("programming3-ch",1);
+                            cb3.setChecked(true);
+                            cb3.setEnabled(false);
+                            Toast.makeText(view.getContext(),"Congrats! You're brilliant", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            firestore.collection("Users").document(Signup.UID).update("programming3-ch",0);
+                            cb3.setChecked(false);
+
+
+                        }
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        cb3.setChecked(false);
+                        dialogInterface.cancel();
+                    }
+                });
+
+                builder.show();
             }
         });
 

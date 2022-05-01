@@ -145,6 +145,19 @@ public class Signup extends AppCompatActivity {
         dataToSave.put("Email", strEmail);
         dataToSave.put("Password", strPassword);
         dataToSave.put("Point", 0);
+        dataToSave.put("programming1-ch", 0);
+        dataToSave.put("programming2-ch", 0);
+        dataToSave.put("programming3-ch", 0);
+        dataToSave.put("network1-ch", 0);
+        dataToSave.put("network2-ch", 0);
+        dataToSave.put("network3-ch", 0);
+        dataToSave.put("database1-ch", 0);
+        dataToSave.put("database2-ch", 0);
+        dataToSave.put("database3-ch", 0);
+        dataToSave.put("web1-ch", 0);
+        dataToSave.put("web2-ch", 0);
+        dataToSave.put("web3-ch", 0);
+
         String id = db.collection("collection_name").document().getId();
         System.out.println(id);
         db.collection("Users").add(dataToSave).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {

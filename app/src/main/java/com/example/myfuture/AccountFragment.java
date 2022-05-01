@@ -3,12 +3,19 @@ package com.example.myfuture;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +31,8 @@ public class AccountFragment extends Fragment {
     public static int points=0;
     private View view;
     private TextView p ;
+    private TextView name ;
+    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -66,7 +75,30 @@ public class AccountFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_account, container, false);
         p = view.findViewById(R.id.points);
+        name = view.findViewById(R.id.name);
         p.setText(Integer.toString(points));
+
+
+            firestore.collection("Users").document(Signup.UID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document != null) {
+                            String n = document.getString("First Name");
+                            name.setText(n);
+
+                        } else {
+                            Log.d("LOGGER", "No such document");
+                        }
+                    } else {
+                        Log.d("LOGGER", "get failed with ", task.getException());
+                    }
+                }
+            });
+
+
+
         return view;
     }
 
