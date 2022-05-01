@@ -87,6 +87,9 @@ public class AccountFragment extends Fragment {
                         if (document != null) {
                             String n = document.getString("First Name");
                             name.setText(n);
+                            int point = document.getLong("Point").intValue();
+                            p.setText(Integer.toString(point));
+
 
                         } else {
                             Log.d("LOGGER", "No such document");
