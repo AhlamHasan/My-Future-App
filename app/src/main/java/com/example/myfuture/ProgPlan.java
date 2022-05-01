@@ -171,6 +171,8 @@ public class ProgPlan extends Fragment {
                                         if (document != null) {
                                             int p = document.getLong("Point").intValue();
                                             AccountFragment.points = p;
+                                            AccountFragment.points+=20;
+                                            firestore.collection("Users").document(Signup.UID).update("Point",AccountFragment.points);
 
                                         } else {
                                             Log.d("LOGGER", "No such document");
@@ -181,13 +183,14 @@ public class ProgPlan extends Fragment {
                                 }
                             });
 
-                            AccountFragment.points+=20;
-                            firestore.collection("Users").document(Signup.UID).update("Point",AccountFragment.points);
                             firestore.collection("Users").document(Signup.UID).update("programming1-ch",1);
                             cb1.setChecked(true);
                             cb1.setEnabled(false);
                             cb2.setEnabled(true);
-                            Toast.makeText(view.getContext(),"Congrats! You're brilliant", Toast.LENGTH_SHORT).show();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Congrats! You are so brilliant");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
                         }else{
                             firestore.collection("Users").document(Signup.UID).update("programming1-ch",0);
                             cb1.setChecked(false);
@@ -223,7 +226,7 @@ public class ProgPlan extends Fragment {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if(input.getText().toString()!= null) {
+                        if(!input.getText().toString().equals("")) {
 
                             firestore.collection("Users").document(Signup.UID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
@@ -233,6 +236,8 @@ public class ProgPlan extends Fragment {
                                         if (document != null) {
                                             int p = document.getLong("Point").intValue();
                                             AccountFragment.points = p;
+                                            AccountFragment.points+=20;
+                                            firestore.collection("Users").document(Signup.UID).update("Point",AccountFragment.points);
 
                                         } else {
                                             Log.d("LOGGER", "No such document");
@@ -243,13 +248,14 @@ public class ProgPlan extends Fragment {
                                 }
                             });
 
-                            AccountFragment.points+=20;
-                            firestore.collection("Users").document(Signup.UID).update("Point",AccountFragment.points);
                             firestore.collection("Users").document(Signup.UID).update("programming2-ch",1);
                             cb2.setChecked(true);
                             cb2.setEnabled(false);
                             cb3.setEnabled(true);
-                            Toast.makeText(view.getContext(),"Congrats! You're brilliant", Toast.LENGTH_SHORT).show();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Congrats! You are so brilliant");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
                         }else{
                             firestore.collection("Users").document(Signup.UID).update("programming2-ch",0);
                             cb2.setChecked(false);
@@ -284,7 +290,7 @@ public class ProgPlan extends Fragment {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if(input.getText().toString()!= null) {
+                        if(!input.getText().toString().equals("")) {
 
                             firestore.collection("Users").document(Signup.UID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
@@ -294,6 +300,8 @@ public class ProgPlan extends Fragment {
                                         if (document != null) {
                                             int p = document.getLong("Point").intValue();
                                             AccountFragment.points = p;
+                                            AccountFragment.points+=20;
+                                            firestore.collection("Users").document(Signup.UID).update("Point",AccountFragment.points);
 
                                         } else {
                                             Log.d("LOGGER", "No such document");
@@ -304,12 +312,13 @@ public class ProgPlan extends Fragment {
                                 }
                             });
 
-                            AccountFragment.points+=20;
-                            firestore.collection("Users").document(Signup.UID).update("Point",AccountFragment.points);
                             firestore.collection("Users").document(Signup.UID).update("programming3-ch",1);
                             cb3.setChecked(true);
                             cb3.setEnabled(false);
-                            Toast.makeText(view.getContext(),"Congrats! You're brilliant", Toast.LENGTH_SHORT).show();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Congrats! You are so brilliant");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
                         }
                         else{
                             firestore.collection("Users").document(Signup.UID).update("programming3-ch",0);

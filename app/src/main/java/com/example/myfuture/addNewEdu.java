@@ -48,7 +48,6 @@ public class addNewEdu extends BottomSheetDialogFragment {
     private Context context;
     private String degUpdate="";
     private View v;
-    private edu e;
 
 
 
