@@ -93,9 +93,7 @@ public class edu extends AppCompatActivity {
 
 
     public void returnCV (View view){
-        //getSupportFragmentManager().beginTransaction().add(android.R.id.content,new MyCVFragment()).commit(); calling fragment from activity
-        Intent i=new Intent(edu.this,HomeActivity.class);
-        startActivity(i);
+        this.finish();
     }
 
 }

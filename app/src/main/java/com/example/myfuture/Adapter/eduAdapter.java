@@ -66,6 +66,7 @@ public class eduAdapter extends RecyclerView.Adapter<eduAdapter.MyViewHolder> {
         addEdu.setArguments(bundle);
         addEdu.show(activity.getSupportFragmentManager() , addEdu.getTag());
 
+
     }
 
     @Override
@@ -105,7 +106,9 @@ public class eduAdapter extends RecyclerView.Adapter<eduAdapter.MyViewHolder> {
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 editEdu(position);
+
             }
         });
 

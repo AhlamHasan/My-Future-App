@@ -47,7 +47,8 @@ public class addNewEdu extends BottomSheetDialogFragment {
     private FirebaseFirestore firestore;
     private Context context;
     private String degUpdate="";
-
+    private View v;
+    private edu e;
 
 
 
@@ -61,12 +62,14 @@ public class addNewEdu extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.add_new_edu, container, false);
+         v = inflater.inflate(R.layout.add_new_edu, container, false);
+        return v;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
 
         setDegree = view.findViewById(R.id.add_degree);
         setDegree2 = view.findViewById(R.id.add_degree2);
@@ -197,23 +200,13 @@ public class addNewEdu extends BottomSheetDialogFragment {
 
                 if(finalIsUpdate){
                     firestore.collection("Education").document(bundle.getString("id")).update("degree",degree,"grade",grade,"degree2",degree2,"year",yearDate);
-                    Toast.makeText(context,"Education Updated", Toast.LENGTH_SHORT).show();
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                    builder.setMessage("Education Updated")
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent home =new Intent(view.getContext(), HomeActivity.class);
-                                    startActivity(home);
-                                }
-                            });
-
+                    builder.setMessage("Education Updated");
                     AlertDialog dialog = builder.create();
                     dialog.show();
 
-
-
+                    getActivity().finish();
 
                 }else {
 
