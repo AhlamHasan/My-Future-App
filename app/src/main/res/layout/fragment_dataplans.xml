@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dataplan">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/fragment_containeer11"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/vvv1"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@color/colorPrimary"
+            android:gravity="bottom"
+            android:padding="17sp"
+            android:text=" Database Plans"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/vvv2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/vvv1"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/wave"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+        //card 1
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ccc1"
+            android:onClick="data1"
+            android:layout_width="325dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="15dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/vvv2">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_blue"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/ttt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Junior level"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ttt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ttt1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Database Plan "
+                    android:textColor="@color/white"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="29dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="283dp"
+                    android:layout_marginLeft="290dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="39dp"
+                    android:background="@drawable/right_arrow" />
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <CheckBox
+            android:id="@+id/cbbb1"
+            android:layout_width="37dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vvv1"
+            android:layout_marginStart="0.1dp"
+            android:layout_marginLeft="360dp"
+            android:layout_marginTop="127dp"
+            android:layout_toEndOf="@+id/ccc1"
+            android:scaleX="1.4"
+            android:scaleY="1.4" />
+
+        // card 2
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ccc2"
+            android:enabled="false"
+            android:onClick="data2"
+            android:layout_below="@+id/ccc1"
+            android:layout_width="325dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="15dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_purple"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/ttt1.2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Middle level"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ttt2.2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ttt1.2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Database Plan "
+                    android:textColor="@color/white"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="29dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="283dp"
+                    android:layout_marginLeft="290dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="39dp"
+                    android:background="@drawable/right_arrow" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <CheckBox
+            android:id="@+id/cbbb2"
+            android:enabled="false"
+            android:layout_width="37dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cbbb1"
+            android:layout_marginStart="0.1dp"
+            android:layout_marginLeft="360dp"
+            android:layout_marginTop="113dp"
+            android:layout_toEndOf="@+id/ccc2"
+            android:scaleX="1.4"
+            android:scaleY="1.4" />
+
+        //card 3
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ccc3"
+            android:enabled="false"
+            android:onClick="data3"
+            android:layout_below="@+id/ccc2"
+            android:layout_width="325dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="15dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_orange"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/ttt1.3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Advanced level"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ttt2.3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ttt1.3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Database Plan"
+                    android:textColor="@color/white"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="29dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="283dp"
+                    android:layout_marginLeft="290dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="39dp"
+                    android:background="@drawable/right_arrow" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <CheckBox
+            android:id="@+id/cbbb3"
+            android:enabled="false"
+            android:layout_width="37dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cbbb2"
+            android:layout_marginStart="0.1dp"
+            android:layout_marginLeft="360dp"
+            android:layout_marginTop="113dp"
+            android:layout_toEndOf="@+id/ccc3"
+            android:scaleX="1.4"
+            android:scaleY="1.4" />
+
+
+    </RelativeLayout>
+
+
+
+</FrameLayout>
