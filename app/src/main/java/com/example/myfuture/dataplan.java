@@ -22,27 +22,25 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link webplan#newInstance} factory method to
+ * Use the {@link dataplan#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class webplan extends Fragment {
+public class dataplan extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-    public CheckBox cbbbb1;
-    public  CheckBox cbbbb2;
-    public  CheckBox cbbbb3;
-
-
+    public CheckBox cbbb1;
+    public  CheckBox cbbb2;
+    public  CheckBox cbbb3;
     private View view;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public webplan() {
+    public dataplan() {
         // Required empty public constructor
     }
 
@@ -52,11 +50,11 @@ public class webplan extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment webplan.
+     * @return A new instance of fragment dataplan.
      */
     // TODO: Rename and change types and number of parameters
-    public static webplan newInstance(String param1, String param2) {
-        webplan fragment = new webplan();
+    public static dataplan newInstance(String param1, String param2) {
+        dataplan fragment = new dataplan();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -81,31 +79,31 @@ public class webplan extends Fragment {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
 
-                        int p1 = document.getLong("programming1-ch").intValue();
-                        int p2 = document.getLong("programming2-ch").intValue();
-                        int p3 = document.getLong("programming3-ch").intValue();
+                        int p1 = document.getLong("database1-ch").intValue();
+                        int p2 = document.getLong("database2-ch").intValue();
+                        int p3 = document.getLong("database3-ch").intValue();
                         if (p1 == 1) {
-                            cbbbb1.setChecked(true);
-                            cbbbb1.setEnabled(false);
+                            cbbb1.setChecked(true);
+                            cbbb1.setEnabled(false);
 
                             if (p2 == 1) {
-                                cbbbb2.setChecked(true);
-                                cbbbb2.setEnabled(false);
+                                cbbb2.setChecked(true);
+                                cbbb2.setEnabled(false);
                             } else{
-                                cbbbb2.setChecked(false);
+                                cbbb2.setChecked(false);
                                 if (p1 == 1) {
-                                    cbbbb2.setEnabled(true);
+                                    cbbb2.setEnabled(true);
                                 }
 
                             }
 
                             if (p3 == 1) {
-                                cbbbb3.setChecked(true);
-                                cbbbb3.setEnabled(false);
+                                cbbb3.setChecked(true);
+                                cbbb3.setEnabled(false);
                             } else{
-                                cbbbb3.setChecked(false);
+                                cbbb3.setChecked(false);
                                 if (p2 == 1) {
-                                    cbbbb3.setEnabled(true);
+                                    cbbb3.setEnabled(true);
                                 }
 
                             }
@@ -123,18 +121,19 @@ public class webplan extends Fragment {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_prog_plan, container, false);
-        cbbbb1 = (CheckBox) view.findViewById(R.id.cbbbb1);
-        cbbbb2 = (CheckBox) view.findViewById(R.id.cbbbb2);
-        cbbbb3 = (CheckBox) view.findViewById(R.id.cbbbb3);
+        view = inflater.inflate(R.layout.fragment_dataplan, container, false);
+        cbbb1 = (CheckBox) view.findViewById(R.id.cbbb1);
+        cbbb2 = (CheckBox) view.findViewById(R.id.cbbb2);
+        cbbb3 = (CheckBox) view.findViewById(R.id.cbbb3);
 
         retrieveData();
 
-        cbbbb1.setOnClickListener(new View.OnClickListener() {
+        cbbb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -170,18 +169,18 @@ public class webplan extends Fragment {
                                 }
                             });
 
-                            firestore.collection("Users").document(Signup.UID).update("web1-ch",1);
-                            cbbbb1.setChecked(true);
-                            cbbbb1.setEnabled(false);
-                            cbbbb2.setEnabled(true);
+                            firestore.collection("Users").document(Signup.UID).update("database1-ch",1);
+                            cbbb1.setChecked(true);
+                            cbbb1.setEnabled(false);
+                            cbbb2.setEnabled(true);
                             AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                             builder.setMessage("Congrats! You are so brilliant");
                             AlertDialog dialog = builder.create();
                             dialog.show();
                         }else{
-                            firestore.collection("Users").document(Signup.UID).update("web1-ch",0);
-                            cbbbb1.setChecked(false);
-                            cbbbb2.setEnabled(false);
+                            firestore.collection("Users").document(Signup.UID).update("database1-ch",0);
+                            cbbb1.setChecked(false);
+                            cbbb2.setEnabled(false);
 
                         }
                     }
@@ -190,8 +189,8 @@ public class webplan extends Fragment {
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        cbbbb1.setChecked(false);
-                        cbbbb2.setEnabled(false);
+                        cbbb1.setChecked(false);
+                        cbbb2.setEnabled(false);
                         dialogInterface.cancel();
                     }
                 });
@@ -200,7 +199,7 @@ public class webplan extends Fragment {
             }
         });
 
-        cbbbb2.setOnClickListener(new View.OnClickListener() {
+        cbbb2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -235,18 +234,18 @@ public class webplan extends Fragment {
                                 }
                             });
 
-                            firestore.collection("Users").document(Signup.UID).update("web2-ch",1);
-                            cbbbb2.setChecked(true);
-                            cbbbb2.setEnabled(false);
-                            cbbbb3.setEnabled(true);
+                            firestore.collection("Users").document(Signup.UID).update("database2-ch",1);
+                            cbbb2.setChecked(true);
+                            cbbb2.setEnabled(false);
+                            cbbb3.setEnabled(true);
                             AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                             builder.setMessage("Congrats! You are so brilliant");
                             AlertDialog dialog = builder.create();
                             dialog.show();
                         }else{
-                            firestore.collection("Users").document(Signup.UID).update("web2-ch",0);
-                            cbbbb2.setChecked(false);
-                            cbbbb3.setEnabled(false);
+                            firestore.collection("Users").document(Signup.UID).update("database2-ch",0);
+                            cbbb2.setChecked(false);
+                            cbbb3.setEnabled(false);
 
                         }
                     }
@@ -255,8 +254,8 @@ public class webplan extends Fragment {
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        cbbbb2.setChecked(false);
-                        cbbbb3.setEnabled(false);
+                        cbbb2.setChecked(false);
+                        cbbb3.setEnabled(false);
                         dialogInterface.cancel();
                     }
                 });
@@ -265,7 +264,7 @@ public class webplan extends Fragment {
             }
         });
 
-        cbbbb3.setOnClickListener(new View.OnClickListener() {
+        cbbb3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
@@ -299,17 +298,17 @@ public class webplan extends Fragment {
                                 }
                             });
 
-                            firestore.collection("Users").document(Signup.UID).update("web3-ch",1);
-                            cbbbb3.setChecked(true);
-                            cbbbb3.setEnabled(false);
+                            firestore.collection("Users").document(Signup.UID).update("database3-ch",1);
+                            cbbb3.setChecked(true);
+                            cbbb3.setEnabled(false);
                             AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                             builder.setMessage("Congrats! You are so brilliant");
                             AlertDialog dialog = builder.create();
                             dialog.show();
                         }
                         else{
-                            firestore.collection("Users").document(Signup.UID).update("web3-ch",0);
-                            cbbbb3.setChecked(false);
+                            firestore.collection("Users").document(Signup.UID).update("database3-ch",0);
+                            cbbb3.setChecked(false);
 
 
                         }
@@ -319,7 +318,7 @@ public class webplan extends Fragment {
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        cbbbb3.setChecked(false);
+                        cbbb3.setChecked(false);
                         dialogInterface.cancel();
                     }
                 });
@@ -333,5 +332,6 @@ public class webplan extends Fragment {
 
 
 
-       // return inflater.inflate(R.layout.fragment_webplan, container, false);
-    }
+       // return inflater.inflate(R.layout.fragment_dataplan, container, false);
+
+}
