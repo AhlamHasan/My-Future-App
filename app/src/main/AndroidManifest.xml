@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFuture">
         <activity
+            android:name=".PersonalDetails"
+            android:exported="false" />
+        <activity
             android:name=".experience"
             android:exported="false" />
         <activity

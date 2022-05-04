@@ -88,6 +88,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    public void personalPage (View view){
+        Intent i=new Intent(HomeActivity.this,PersonalDetails.class);
+        startActivity(i);
+
+    }
+
     public void expPage (View view){
         Intent i=new Intent(HomeActivity.this,experience.class);
         startActivity(i);
