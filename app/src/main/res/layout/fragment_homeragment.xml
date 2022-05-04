@@ -82,6 +82,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:onClick="netPlan"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_marginTop="50dp"
@@ -105,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="sans-serif-black"
-                    android:text="programming"
+                    android:text="Network"
                     android:textAlignment="center"
                     android:textColor="#292828"
                     android:textSize="30sp" />
@@ -126,6 +127,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:onClick="dataPlan"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_marginTop="50dp"
@@ -149,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="sans-serif-black"
-                    android:text="programming"
+                    android:text="Database"
                     android:textAlignment="center"
                     android:textColor="#292828"
                     android:textSize="30sp" />
@@ -171,6 +173,7 @@
 
 
         <androidx.cardview.widget.CardView
+            android:onClick="webPlan"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_marginTop="50dp"
@@ -194,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="sans-serif-black"
-                    android:text="programming"
+                    android:text="Web"
                     android:textAlignment="center"
                     android:textColor="#292828"
                     android:textSize="30sp" />
