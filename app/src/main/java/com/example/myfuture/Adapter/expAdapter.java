@@ -15,56 +15,57 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfuture.HomeActivity;
-import com.example.myfuture.Model.eduModel;
+import com.example.myfuture.Model.expModel;
 import com.example.myfuture.ProgPlan;
 import com.example.myfuture.R;
 import com.example.myfuture.SignInActivity;
 import com.example.myfuture.Signup;
-import com.example.myfuture.addNewEdu;
-import com.example.myfuture.edu;
+import com.example.myfuture.addNewExp;
+import com.example.myfuture.experience;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
-public class eduAdapter extends RecyclerView.Adapter<eduAdapter.MyViewHolder> {
+public class expAdapter extends RecyclerView.Adapter<expAdapter.MyViewHolder> {
 
-    private List<eduModel> eduList;
-    private edu activity;
+    private List<expModel> exList;
+    private experience activity;
     private FirebaseFirestore firestore;
 
 
-    public eduAdapter(edu eduActivity , List<eduModel> eduList ){
-        this.eduList = eduList;
-        activity = eduActivity;
+    public expAdapter(experience exActivity , List<expModel> exList ){
+        this.exList = exList;
+        activity = exActivity;
     }
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.each_edu, parent , false );
+        View view = LayoutInflater.from(activity).inflate(R.layout.each_exp, parent , false );
         firestore = FirebaseFirestore.getInstance();
         return new MyViewHolder(view);
     }
 
-    public void deleteEdu(int position){
-        eduModel eModel = eduList.get(position);
-        firestore.collection("Education").document(eModel.eduID).delete();
-        eduList.remove(position);
+    public void deleteExp(int position){
+        expModel eModel = exList.get(position);
+        firestore.collection("Experiences").document(eModel.expID).delete();
+        exList.remove(position);
         notifyItemRemoved(position);
     }
 
-    public void editEdu(int position){
-        eduModel eModel = eduList.get(position);
+    public void editExp(int position){
+        expModel eModel = exList.get(position);
 
         Bundle bundle = new Bundle();
-        bundle.putString("degree", eModel.getDegree());
-        bundle.putString("University", eModel.getDegree2());
-        bundle.putString("grade", eModel.getGrade());
-        bundle.putString("year", eModel.getYear());
-        bundle.putString("id", eModel.eduID);
+        bundle.putString("company", eModel.getCompany());
+        bundle.putString("job title", eModel.getJob());
+        bundle.putString("description", eModel.getJobDes());
+        bundle.putString("start date", eModel.getStartDate());
+        bundle.putString("end date", eModel.getEndDate());
+        bundle.putString("id", eModel.expID);
 
-        addNewEdu addEdu = new addNewEdu();
-        addEdu.setArguments(bundle);
-        addEdu.show(activity.getSupportFragmentManager() , addEdu.getTag());
+        addNewExp addExp = new addNewExp();
+        addExp.setArguments(bundle);
+        addExp.show(activity.getSupportFragmentManager() , addExp.getTag());
 
 
     }
@@ -72,13 +73,13 @@ public class eduAdapter extends RecyclerView.Adapter<eduAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        eduModel emodel = eduList.get(position); // to return correct item
+        expModel emodel = exList.get(position); // to return correct item
 
-        holder.degree.setText(emodel.getDegree());
-        holder.degree2.setText(emodel.getDegree2());
-        holder.grade.setText(emodel.getGrade());
-        holder.year.setText(emodel.getYear());
-        System.out.println(emodel.getDegree2() +" "+emodel.getDegree());
+        holder.company.setText(emodel.getCompany());
+        holder.job.setText(emodel.getJob());
+        holder.jobDes.setText(emodel.getJobDes());
+        holder.startDate.setText(emodel.getStartDate());
+        holder.endDate.setText(emodel.getEndDate());
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +89,7 @@ public class eduAdapter extends RecyclerView.Adapter<eduAdapter.MyViewHolder> {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                deleteEdu(position);
+                                deleteExp(position);
                             }
                         }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
@@ -107,7 +108,7 @@ public class eduAdapter extends RecyclerView.Adapter<eduAdapter.MyViewHolder> {
             @Override
             public void onClick(View view) {
 
-                editEdu(position);
+                editExp(position);
 
             }
         });
@@ -118,23 +119,24 @@ public class eduAdapter extends RecyclerView.Adapter<eduAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return eduList.size();
+        return exList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        EditText degree,degree2,grade,year;
+        EditText company,job,jobDes,startDate,endDate;
         Button edit,delete;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            degree = itemView.findViewById(R.id.edu_degree);
-            degree2 = itemView.findViewById(R.id.edu_degree2);
-            grade = itemView.findViewById(R.id.edu_grade);
-            year = itemView.findViewById(R.id.edu_year);
-            edit = itemView.findViewById(R.id.edu_edit);
-            delete = itemView.findViewById(R.id.edu_delete);
+            company = itemView.findViewById(R.id.exp_company);
+            job = itemView.findViewById(R.id.exp_job);
+            jobDes = itemView.findViewById(R.id.exp_jobDescribe);
+            startDate = itemView.findViewById(R.id.exp_startYear);
+            endDate = itemView.findViewById(R.id.exp_endYear);
+            edit = itemView.findViewById(R.id.exp_edit);
+            delete = itemView.findViewById(R.id.exp_delete);
         }
     }
 

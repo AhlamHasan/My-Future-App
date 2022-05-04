@@ -157,6 +157,8 @@ public class Signup extends AppCompatActivity {
         dataToSave.put("web1-ch", 0);
         dataToSave.put("web2-ch", 0);
         dataToSave.put("web3-ch", 0);
+        dataToSave.put("objective", "");
+        dataToSave.put("skills", "");
 
         String id = db.collection("collection_name").document().getId();
         System.out.println(id);

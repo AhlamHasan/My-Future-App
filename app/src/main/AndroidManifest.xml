@@ -11,6 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFuture">
         <activity
+            android:name=".experience"
+            android:exported="false" />
+        <activity
+            android:name=".skills"
+            android:exported="false" />
+        <activity
+            android:name=".objective"
+            android:exported="false" />
+        <activity
             android:name=".project"
             android:exported="false" />
         <activity
