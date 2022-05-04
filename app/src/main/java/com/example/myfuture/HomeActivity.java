@@ -76,6 +76,18 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    public void objPage (View view){
+        Intent i=new Intent(HomeActivity.this,objective.class);
+        startActivity(i);
+
+    }
+
+    public void skillsPage (View view){
+        Intent i=new Intent(HomeActivity.this,skills.class);
+        startActivity(i);
+
+    }
+
     public void expPage (View view){
         Intent i=new Intent(HomeActivity.this,experience.class);
         startActivity(i);
@@ -93,25 +105,6 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-//    public void retrieveData(String doc ,String l) {
-//
-//        firestore.collection("plans").document(doc).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    DocumentSnapshot document = task.getResult();
-//                    if (document != null) {
-//                        level = (String)document.getString(l);
-//                        System.out.println("hello"+level);
-//                    } else {
-//                        Log.d("LOGGER", "No such document");
-//                    }
-//                } else {
-//                    Log.d("LOGGER", "get failed with ", task.getException());
-//                }
-//            }
-//        });
-//    }
 
     public void prog1 (View view){
         firestore.collection("plans").document("programming").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

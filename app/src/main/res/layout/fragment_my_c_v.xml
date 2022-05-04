@@ -134,6 +134,7 @@
                     app:iconTint="@android:color/transparent"
                     app:iconTintMode="add"
                     app:iconGravity="end"
+                    android:onClick="skillsPage"
                     android:text="@string/skills"
                     android:gravity="center_vertical" />
 
@@ -159,6 +160,7 @@
                     app:iconTint="@android:color/transparent"
                     app:iconTintMode="add"
                     app:iconGravity="end"
+                    android:onClick="objPage"
                     android:text="@string/objective"
                     android:gravity="center_vertical"/>
 
