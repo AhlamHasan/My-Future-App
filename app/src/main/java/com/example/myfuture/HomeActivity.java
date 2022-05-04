@@ -76,30 +76,6 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    public void objPage (View view){
-        Intent i=new Intent(HomeActivity.this,objective.class);
-        startActivity(i);
-
-    }
-
-    public void skillsPage (View view){
-        Intent i=new Intent(HomeActivity.this,skills.class);
-        startActivity(i);
-
-    }
-
-    public void personalPage (View view){
-        Intent i=new Intent(HomeActivity.this,PersonalDetails.class);
-        startActivity(i);
-
-    }
-
-    public void expPage (View view){
-        Intent i=new Intent(HomeActivity.this,experience.class);
-        startActivity(i);
-
-    }
-
     public void proPage (View view){
         Intent i=new Intent(HomeActivity.this,project.class);
         startActivity(i);
@@ -111,6 +87,25 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+//    public void retrieveData(String doc ,String l) {
+//
+//        firestore.collection("plans").document(doc).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    DocumentSnapshot document = task.getResult();
+//                    if (document != null) {
+//                        level = (String)document.getString(l);
+//                        System.out.println("hello"+level);
+//                    } else {
+//                        Log.d("LOGGER", "No such document");
+//                    }
+//                } else {
+//                    Log.d("LOGGER", "get failed with ", task.getException());
+//                }
+//            }
+//        });
+//    }
 
     public void prog1 (View view){
         firestore.collection("plans").document("programming").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -162,6 +157,238 @@ public class HomeActivity extends AppCompatActivity {
 
     public void prog3 (View view){
         firestore.collection("plans").document("programming").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null) {
+                        String level = document.getString("level3");
+                        Uri url = Uri.parse(level);
+                        Intent i = new Intent();
+                        i.setData(url);
+                        i.setAction(Intent.ACTION_VIEW);
+                        startActivity(i);
+
+                    } else {
+                        Log.d("LOGGER", "No such document");
+                    }
+                } else {
+                    Log.d("LOGGER", "get failed with ", task.getException());
+                }
+            }
+        });
+
+
+    }
+    public void netPlan (View view){
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containeer1, new netplans()).commit();
+
+    }
+    public void net1 (View view){
+        firestore.collection("plans").document("networking").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null) {
+                        String level = document.getString("level1");
+                        Uri url = Uri.parse(level);
+                        Intent i = new Intent();
+                        i.setData(url);
+                        i.setAction(Intent.ACTION_VIEW);
+                        startActivity(i);
+
+                    } else {
+                        Log.d("LOGGER", "No such document");
+                    }
+                } else {
+                    Log.d("LOGGER", "get failed with ", task.getException());
+                }
+            }
+        });
+    }
+
+    public void net2 (View view){
+        firestore.collection("plans").document("networking").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null) {
+                        String level = document.getString("level2");
+                        Uri url = Uri.parse(level);
+                        Intent i = new Intent();
+                        i.setData(url);
+                        i.setAction(Intent.ACTION_VIEW);
+                        startActivity(i);
+
+                    } else {
+                        Log.d("LOGGER", "No such document");
+                    }
+                } else {
+                    Log.d("LOGGER", "get failed with ", task.getException());
+                }
+            }
+        });
+    }
+
+    public void net3 (View view){
+        firestore.collection("plans").document("networking").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null) {
+                        String level = document.getString("level3");
+                        Uri url = Uri.parse(level);
+                        Intent i = new Intent();
+                        i.setData(url);
+                        i.setAction(Intent.ACTION_VIEW);
+                        startActivity(i);
+
+                    } else {
+                        Log.d("LOGGER", "No such document");
+                    }
+                } else {
+                    Log.d("LOGGER", "get failed with ", task.getException());
+                }
+            }
+        });
+
+
+    }
+    public void dataPlan (View view){
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containeer11, new dataplan()).commit();
+
+    }
+    public void data1 (View view){
+        firestore.collection("plans").document("database").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null) {
+                        String level = document.getString("level1");
+                        Uri url = Uri.parse(level);
+                        Intent i = new Intent();
+                        i.setData(url);
+                        i.setAction(Intent.ACTION_VIEW);
+                        startActivity(i);
+
+                    } else {
+                        Log.d("LOGGER", "No such document");
+                    }
+                } else {
+                    Log.d("LOGGER", "get failed with ", task.getException());
+                }
+            }
+        });
+    }
+
+    public void data2 (View view){
+        firestore.collection("plans").document("database").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null) {
+                        String level = document.getString("level2");
+                        Uri url = Uri.parse(level);
+                        Intent i = new Intent();
+                        i.setData(url);
+                        i.setAction(Intent.ACTION_VIEW);
+                        startActivity(i);
+
+                    } else {
+                        Log.d("LOGGER", "No such document");
+                    }
+                } else {
+                    Log.d("LOGGER", "get failed with ", task.getException());
+                }
+            }
+        });
+    }
+
+    public void data3 (View view){
+        firestore.collection("plans").document("database").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null) {
+                        String level = document.getString("level3");
+                        Uri url = Uri.parse(level);
+                        Intent i = new Intent();
+                        i.setData(url);
+                        i.setAction(Intent.ACTION_VIEW);
+                        startActivity(i);
+
+                    } else {
+                        Log.d("LOGGER", "No such document");
+                    }
+                } else {
+                    Log.d("LOGGER", "get failed with ", task.getException());
+                }
+            }
+        });
+
+
+    }
+
+    public void webPlan (View view){
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containeer111, new webplan()).commit();
+
+    }
+    public void web1 (View view){
+        firestore.collection("plans").document("web").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null) {
+                        String level = document.getString("level1");
+                        Uri url = Uri.parse(level);
+                        Intent i = new Intent();
+                        i.setData(url);
+                        i.setAction(Intent.ACTION_VIEW);
+                        startActivity(i);
+
+                    } else {
+                        Log.d("LOGGER", "No such document");
+                    }
+                } else {
+                    Log.d("LOGGER", "get failed with ", task.getException());
+                }
+            }
+        });
+    }
+
+    public void web2 (View view){
+        firestore.collection("plans").document("web").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null) {
+                        String level = document.getString("level2");
+                        Uri url = Uri.parse(level);
+                        Intent i = new Intent();
+                        i.setData(url);
+                        i.setAction(Intent.ACTION_VIEW);
+                        startActivity(i);
+
+                    } else {
+                        Log.d("LOGGER", "No such document");
+                    }
+                } else {
+                    Log.d("LOGGER", "get failed with ", task.getException());
+                }
+            }
+        });
+    }
+
+    public void web3 (View view){
+        firestore.collection("plans").document("web").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
