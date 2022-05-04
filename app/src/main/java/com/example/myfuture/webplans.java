@@ -22,10 +22,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link webplan#newInstance} factory method to
+ * Use the {@link webplans#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class webplan extends Fragment {
+public class webplans extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,7 +42,7 @@ public class webplan extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public webplan() {
+    public webplans() {
         // Required empty public constructor
     }
 
@@ -55,8 +55,8 @@ public class webplan extends Fragment {
      * @return A new instance of fragment webplan.
      */
     // TODO: Rename and change types and number of parameters
-    public static webplan newInstance(String param1, String param2) {
-        webplan fragment = new webplan();
+    public static webplans newInstance(String param1, String param2) {
+        webplans fragment = new webplans();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -127,7 +127,7 @@ public class webplan extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_webplan, container, false);
+        view = inflater.inflate(R.layout.fragment_webplans, container, false);
         cbbbb1 = (CheckBox) view.findViewById(R.id.cbbbb1);
         cbbbb2 = (CheckBox) view.findViewById(R.id.cbbbb2);
         cbbbb3 = (CheckBox) view.findViewById(R.id.cbbbb3);
@@ -330,8 +330,4 @@ public class webplan extends Fragment {
 
         return view;
     }
-
-
-
-       // return inflater.inflate(R.layout.fragment_webplan, container, false);
-    }
+}

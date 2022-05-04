@@ -87,26 +87,6 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-//    public void retrieveData(String doc ,String l) {
-//
-//        firestore.collection("plans").document(doc).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    DocumentSnapshot document = task.getResult();
-//                    if (document != null) {
-//                        level = (String)document.getString(l);
-//                        System.out.println("hello"+level);
-//                    } else {
-//                        Log.d("LOGGER", "No such document");
-//                    }
-//                } else {
-//                    Log.d("LOGGER", "get failed with ", task.getException());
-//                }
-//            }
-//        });
-//    }
-
     public void prog1 (View view){
         firestore.collection("plans").document("programming").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -181,7 +161,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
     public void netPlan (View view){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containeer1, new netplans()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new netplans()).commit();
 
     }
     public void net1 (View view){
@@ -216,11 +196,11 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level2");
-                        Uri url = Uri.parse(level);
-                        Intent i = new Intent();
-                        i.setData(url);
-                        i.setAction(Intent.ACTION_VIEW);
-                        startActivity(i);
+//                        Uri url = Uri.parse(level);
+//                        Intent i = new Intent();
+//                        i.setData(url);
+//                        i.setAction(Intent.ACTION_VIEW);
+//                        startActivity(i);
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -240,11 +220,11 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level3");
-                        Uri url = Uri.parse(level);
-                        Intent i = new Intent();
-                        i.setData(url);
-                        i.setAction(Intent.ACTION_VIEW);
-                        startActivity(i);
+//                        Uri url = Uri.parse(level);
+//                        Intent i = new Intent();
+//                        i.setData(url);
+//                        i.setAction(Intent.ACTION_VIEW);
+//                        startActivity(i);
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -258,7 +238,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
     public void dataPlan (View view){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containeer11, new dataplan()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new dataplan()).commit();
 
     }
     public void data1 (View view){
@@ -336,7 +316,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void webPlan (View view){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containeer111, new webplan()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new webplans()).commit();
 
     }
     public void web1 (View view){

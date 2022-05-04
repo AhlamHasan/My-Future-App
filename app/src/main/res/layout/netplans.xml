@@ -85,7 +85,7 @@
                     android:layout_below="@+id/tt1"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Network Plan "
+                    android:text="CCNA certification"
                     android:textColor="@color/white"
                     android:textSize="23sp"
                     android:textStyle="bold" />
@@ -158,7 +158,7 @@
                     android:layout_below="@+id/tt1.2"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Network Plan "
+                    android:text="Network Plan 2 "
                     android:textColor="@color/white"
                     android:textSize="23sp"
                     android:textStyle="bold" />
@@ -233,7 +233,7 @@
                     android:layout_below="@+id/tt1.3"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Network Plan"
+                    android:text="Network Plan 3"
                     android:textColor="@color/white"
                     android:textSize="23sp"
                     android:textStyle="bold" />

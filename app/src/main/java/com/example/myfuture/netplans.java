@@ -127,7 +127,7 @@ public class netplans extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_netplans, container, false);
+        view = inflater.inflate(R.layout.netplans, container, false);
         cbb1 = (CheckBox) view.findViewById(R.id.cbb1);
         cbb2 = (CheckBox) view.findViewById(R.id.cbb2);
         cbb3 = (CheckBox) view.findViewById(R.id.cbb3);

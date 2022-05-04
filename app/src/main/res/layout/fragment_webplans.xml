@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".webplan">
+    tools:context=".webplans">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
@@ -85,7 +85,7 @@
                     android:layout_below="@+id/tttt1"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Database Plan "
+                    android:text="Web Design"
                     android:textColor="@color/white"
                     android:textSize="23sp"
                     android:textStyle="bold" />
@@ -158,7 +158,7 @@
                     android:layout_below="@+id/tttt1.2"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Web Plan "
+                    android:text="Google firebase web app"
                     android:textColor="@color/white"
                     android:textSize="23sp"
                     android:textStyle="bold" />
@@ -233,7 +233,7 @@
                     android:layout_below="@+id/tttt1.3"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Web Plan"
+                    android:text="Full-Stack react framework"
                     android:textColor="@color/white"
                     android:textSize="23sp"
                     android:textStyle="bold" />

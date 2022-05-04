@@ -126,7 +126,7 @@ public class dataplan extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_dataplan, container, false);
+        view = inflater.inflate(R.layout.fragment_dataplans, container, false);
         cbbb1 = (CheckBox) view.findViewById(R.id.cbbb1);
         cbbb2 = (CheckBox) view.findViewById(R.id.cbbb2);
         cbbb3 = (CheckBox) view.findViewById(R.id.cbbb3);
