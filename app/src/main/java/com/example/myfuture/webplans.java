@@ -81,9 +81,9 @@ public class webplan extends Fragment {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
 
-                        int p1 = document.getLong("programming1-ch").intValue();
-                        int p2 = document.getLong("programming2-ch").intValue();
-                        int p3 = document.getLong("programming3-ch").intValue();
+                        int p1 = document.getLong("web1-ch").intValue();
+                        int p2 = document.getLong("web2-ch").intValue();
+                        int p3 = document.getLong("web3-ch").intValue();
                         if (p1 == 1) {
                             cbbbb1.setChecked(true);
                             cbbbb1.setEnabled(false);
@@ -127,7 +127,7 @@ public class webplan extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_prog_plan, container, false);
+        view = inflater.inflate(R.layout.fragment_webplan, container, false);
         cbbbb1 = (CheckBox) view.findViewById(R.id.cbbbb1);
         cbbbb2 = (CheckBox) view.findViewById(R.id.cbbbb2);
         cbbbb3 = (CheckBox) view.findViewById(R.id.cbbbb3);
