@@ -76,8 +76,32 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    public void objPage (View view){
+        Intent i=new Intent(HomeActivity.this,objective.class);
+        startActivity(i);
+
+    }
+
+    public void skillsPage (View view){
+        Intent i=new Intent(HomeActivity.this,skills.class);
+        startActivity(i);
+
+    }
+
+    public void personalPage (View view){
+        Intent i=new Intent(HomeActivity.this,PersonalDetails.class);
+        startActivity(i);
+
+    }
+
     public void proPage (View view){
         Intent i=new Intent(HomeActivity.this,project.class);
+        startActivity(i);
+
+    }
+
+    public void expPage (View view){
+        Intent i=new Intent(HomeActivity.this,experience.class);
         startActivity(i);
 
     }
