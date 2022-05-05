@@ -77,8 +77,14 @@ public class experience extends AppCompatActivity {
                     if (doc.getType() == DocumentChange.Type.ADDED){
                         String id = doc.getDocument().getId();
                         expModel exModel = doc.getDocument().toObject(expModel.class).withId(id);
+                        exModel.setCompany(doc.getDocument().getString("company"));
+                        exModel.setJob(doc.getDocument().getString("job title"));
+                        exModel.setJobDes(doc.getDocument().getString("description"));
+                        exModel.setStartDate(doc.getDocument().getString("start date"));
+                        exModel.setEndDate(doc.getDocument().getString("end date"));
 
                         eList.add(exModel);
+                        System.out.println("the size is of eList : "+ eList.size());
                         adapter.notifyDataSetChanged();
 
                     }

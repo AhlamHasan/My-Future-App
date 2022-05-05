@@ -40,7 +40,7 @@ public class addNewEdu extends BottomSheetDialogFragment {
 
     public static final String TAG = "addNewEdu";
     private EditText setDegree;
-    private EditText setDegree2;
+    private EditText setUni;
     private EditText setGrade;
     private TextView setYear;
     private Button save;
@@ -71,7 +71,7 @@ public class addNewEdu extends BottomSheetDialogFragment {
 
 
         setDegree = view.findViewById(R.id.add_degree);
-        setDegree2 = view.findViewById(R.id.add_degree2);
+        setUni = view.findViewById(R.id.add_uni);
         setGrade = view.findViewById(R.id.add_grade);
         setYear = view.findViewById(R.id.add_year);
         save = view.findViewById(R.id.save_edu);
@@ -86,7 +86,7 @@ public class addNewEdu extends BottomSheetDialogFragment {
 
             setDegree.setText(bundle.getString("degree"));
             degUpdate = setDegree.getText().toString();
-            setDegree2.setText(bundle.getString("degree2"));
+            setUni.setText(bundle.getString("university"));
             setGrade.setText(bundle.getString("grade"));
             setYear.setText(bundle.getString("year"));
 
@@ -121,7 +121,7 @@ public class addNewEdu extends BottomSheetDialogFragment {
             }
         });
 
-        setDegree2.addTextChangedListener(new TextWatcher() {
+        setUni.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -193,12 +193,12 @@ public class addNewEdu extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 String degree = setDegree.getText().toString();
-                String degree2 = setDegree2.getText().toString();
+                String uni = setUni.getText().toString();
                 String grade = setGrade.getText().toString();
                 String yearDate = setYear.getText().toString();
 
                 if(finalIsUpdate){
-                    firestore.collection("Education").document(bundle.getString("id")).update("degree",degree,"grade",grade,"degree2",degree2,"year",yearDate);
+                    firestore.collection("Education").document(bundle.getString("id")).update("degree",degree,"grade",grade,"university",uni,"year",yearDate);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                     builder.setMessage("Education Updated");
@@ -209,7 +209,7 @@ public class addNewEdu extends BottomSheetDialogFragment {
 
                 }else {
 
-                    if (degree.isEmpty() || degree2.isEmpty() || grade.isEmpty() || yearDate.equals("Set the graduation date")) {
+                    if (degree.isEmpty() || uni.isEmpty() || grade.isEmpty() || yearDate.equals("Set the graduation date")) {
                         Toast.makeText(context, "Empty education NOT allowed !!", Toast.LENGTH_SHORT).show();
                         System.out.println(yearDate);
                     } else {
@@ -217,7 +217,7 @@ public class addNewEdu extends BottomSheetDialogFragment {
                         Map<String, Object> eduMap = new HashMap<>();
 
                         eduMap.put("degree", degree);
-                        eduMap.put("degree2", degree2);
+                        eduMap.put("university", uni);
                         eduMap.put("grade", grade);
                         eduMap.put("year", yearDate);
                         eduMap.put("User_ID", Signup.UID);

@@ -47,7 +47,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/degree2"
+        android:id="@+id/uni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
@@ -56,7 +56,7 @@
         app:hintTextAppearance="@android:style/TextAppearance.Medium">
 
         <EditText
-            android:id="@+id/add_degree2"
+            android:id="@+id/add_uni"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="University / School" />

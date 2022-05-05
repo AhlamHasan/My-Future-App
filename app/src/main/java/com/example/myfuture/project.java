@@ -80,7 +80,12 @@ public class project extends AppCompatActivity {
                         String id = doc.getDocument().getId();
                         proModel pModel = doc.getDocument().toObject(proModel.class).withId(id);
 
+                        pModel.setTitle(doc.getDocument().getString("title"));
+                        pModel.setDescribe(doc.getDocument().getString("description"));
+                        pModel.setYear(doc.getDocument().getString("year"));
+
                         pList.add(pModel);
+                        System.out.println("the size is of pList : "+ pList.size());
                         adapter.notifyDataSetChanged();
 
                     }

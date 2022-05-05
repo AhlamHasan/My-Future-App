@@ -80,7 +80,13 @@ public class edu extends AppCompatActivity {
                         String id = doc.getDocument().getId();
                         eduModel eModel = doc.getDocument().toObject(eduModel.class).withId(id);
 
+                        eModel.setDegree(doc.getDocument().getString("degree"));
+                        eModel.setUniversity(doc.getDocument().getString("university"));
+                        eModel.setGrade(doc.getDocument().getString("grade"));
+                        eModel.setYear(doc.getDocument().getString("year"));
+
                         mList.add(eModel);
+                        System.out.println("the size is of mList : "+ mList.size());
                         adapter.notifyDataSetChanged();
 
                     }

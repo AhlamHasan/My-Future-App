@@ -75,11 +75,12 @@ public class expAdapter extends RecyclerView.Adapter<expAdapter.MyViewHolder> {
 
         expModel emodel = exList.get(position); // to return correct item
 
-        holder.company.setText(emodel.getCompany());
         holder.job.setText(emodel.getJob());
+        holder.company.setText(emodel.getCompany());
         holder.jobDes.setText(emodel.getJobDes());
         holder.startDate.setText(emodel.getStartDate());
         holder.endDate.setText(emodel.getEndDate());
+
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +138,7 @@ public class expAdapter extends RecyclerView.Adapter<expAdapter.MyViewHolder> {
             endDate = itemView.findViewById(R.id.exp_endYear);
             edit = itemView.findViewById(R.id.exp_edit);
             delete = itemView.findViewById(R.id.exp_delete);
+
         }
     }
 

@@ -46,25 +46,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:id="@+id/form_edu_til_university"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:errorEnabled="true"-->
-<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                app:hintTextAppearance="@android:style/TextAppearance.Medium">-->
-
-<!--                <EditText-->
-<!--                    android:id="@+id/edu_uni"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:enabled="false"-->
-<!--                    android:focusable="false"-->
-<!--                    android:hint="University / School" />-->
-
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
-
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/form_edu_til_grade"
@@ -84,7 +65,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/form_edu_til_degree2"
+                android:id="@+id/form_edu_til_uni"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
@@ -93,7 +74,7 @@
                 app:hintTextAppearance="@android:style/TextAppearance.Medium">
 
                 <EditText
-                    android:id="@+id/edu_degree2"
+                    android:id="@+id/edu_uni"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"
