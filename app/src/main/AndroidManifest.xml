@@ -14,6 +14,9 @@
             android:name=".PersonalDetails"
             android:exported="false" />
         <activity
+            android:name=".Template"
+            android:exported="false" />
+        <activity
             android:name=".experience"
             android:exported="false" />
         <activity

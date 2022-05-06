@@ -204,6 +204,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
+                android:onClick="callTemplatePage"
                 android:text="@string/view_cv"
                 android:textSize="20sp"
                 app:icon="@drawable/ic_remove_red_eye_black_24dp"

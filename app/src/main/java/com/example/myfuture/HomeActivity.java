@@ -94,6 +94,11 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    public void callTemplatePage(View view){
+        Intent i=new Intent(HomeActivity.this,Template.class);
+        startActivity(i);
+    }
+
     public void proPage (View view){
         Intent i=new Intent(HomeActivity.this,project.class);
         startActivity(i);
