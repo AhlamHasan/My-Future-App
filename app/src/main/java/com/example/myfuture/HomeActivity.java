@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.net.URL;
 import java.util.Collections;
 
 public class HomeActivity extends AppCompatActivity {
@@ -116,6 +118,16 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    public boolean urlVerification(String url){
+        try{
+            new URL(url).toURI();
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
+
     public void prog1 (View view){
         firestore.collection("plans").document("programming").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -124,11 +136,20 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level1");
-                        Uri url = Uri.parse(level);
-                        Intent i = new Intent();
-                        i.setData(url);
-                        i.setAction(Intent.ACTION_VIEW);
-                        startActivity(i);
+                        if(urlVerification(level)) {
+                            Uri url = Uri.parse(level);
+                            Intent i = new Intent();
+                            i.setData(url);
+                            i.setAction(Intent.ACTION_VIEW);
+                            startActivity(i);
+                        } else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Sorry! you can't open this plan now");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            // message to admin to handle url error
+                            Log.d("LOGGER", "URL of Programming Level 1 not added correctly");
+                        }
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -148,11 +169,20 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level2");
-                        Uri url = Uri.parse(level);
-                        Intent i = new Intent();
-                        i.setData(url);
-                        i.setAction(Intent.ACTION_VIEW);
-                        startActivity(i);
+                        if(urlVerification(level)) {
+                            Uri url = Uri.parse(level);
+                            Intent i = new Intent();
+                            i.setData(url);
+                            i.setAction(Intent.ACTION_VIEW);
+                            startActivity(i);
+                        } else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Sorry! you can't open this plan now");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            // message to admin to handle url error
+                            Log.d("LOGGER", "URL of Programming Level 2 not added correctly");
+                        }
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -172,11 +202,20 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level3");
-                        Uri url = Uri.parse(level);
-                        Intent i = new Intent();
-                        i.setData(url);
-                        i.setAction(Intent.ACTION_VIEW);
-                        startActivity(i);
+                        if(urlVerification(level)) {
+                            Uri url = Uri.parse(level);
+                            Intent i = new Intent();
+                            i.setData(url);
+                            i.setAction(Intent.ACTION_VIEW);
+                            startActivity(i);
+                        } else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Sorry! you can't open this plan now");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            // message to admin to handle url error
+                            Log.d("LOGGER", "URL of Programming Level 3 not added correctly");
+                        }
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -201,11 +240,20 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level1");
-                        Uri url = Uri.parse(level);
-                        Intent i = new Intent();
-                        i.setData(url);
-                        i.setAction(Intent.ACTION_VIEW);
-                        startActivity(i);
+                        if(urlVerification(level)) {
+                            Uri url = Uri.parse(level);
+                            Intent i = new Intent();
+                            i.setData(url);
+                            i.setAction(Intent.ACTION_VIEW);
+                            startActivity(i);
+                        } else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Sorry! you can't open this plan now");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            // message to admin to handle url error
+                            Log.d("LOGGER", "URL of Networking Level 1 not added correctly");
+                        }
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -225,11 +273,20 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level2");
-//                        Uri url = Uri.parse(level);
-//                        Intent i = new Intent();
-//                        i.setData(url);
-//                        i.setAction(Intent.ACTION_VIEW);
-//                        startActivity(i);
+                        if(urlVerification(level)) {
+                            Uri url = Uri.parse(level);
+                            Intent i = new Intent();
+                            i.setData(url);
+                            i.setAction(Intent.ACTION_VIEW);
+                            startActivity(i);
+                        } else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Sorry! you can't open this plan now");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            // message to admin to handle url error
+                            Log.d("LOGGER", "URL of Networking Level 2 not added correctly");
+                        }
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -249,11 +306,20 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level3");
-//                        Uri url = Uri.parse(level);
-//                        Intent i = new Intent();
-//                        i.setData(url);
-//                        i.setAction(Intent.ACTION_VIEW);
-//                        startActivity(i);
+                        if(urlVerification(level)) {
+                            Uri url = Uri.parse(level);
+                            Intent i = new Intent();
+                            i.setData(url);
+                            i.setAction(Intent.ACTION_VIEW);
+                            startActivity(i);
+                        } else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Sorry! you can't open this plan now");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            // message to admin to handle url error
+                            Log.d("LOGGER", "URL of Networking Level 3 not added correctly");
+                        }
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -278,11 +344,20 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level1");
-                        Uri url = Uri.parse(level);
-                        Intent i = new Intent();
-                        i.setData(url);
-                        i.setAction(Intent.ACTION_VIEW);
-                        startActivity(i);
+                        if(urlVerification(level)) {
+                            Uri url = Uri.parse(level);
+                            Intent i = new Intent();
+                            i.setData(url);
+                            i.setAction(Intent.ACTION_VIEW);
+                            startActivity(i);
+                        } else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Sorry! you can't open this plan now");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            // message to admin to handle url error
+                            Log.d("LOGGER", "URL of Database Level 1 not added correctly");
+                        }
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -302,11 +377,20 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level2");
-                        Uri url = Uri.parse(level);
-                        Intent i = new Intent();
-                        i.setData(url);
-                        i.setAction(Intent.ACTION_VIEW);
-                        startActivity(i);
+                        if(urlVerification(level)) {
+                            Uri url = Uri.parse(level);
+                            Intent i = new Intent();
+                            i.setData(url);
+                            i.setAction(Intent.ACTION_VIEW);
+                            startActivity(i);
+                        } else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Sorry! you can't open this plan now");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            // message to admin to handle url error
+                            Log.d("LOGGER", "URL of Database Level 2 not added correctly");
+                        }
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -326,11 +410,20 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level3");
-                        Uri url = Uri.parse(level);
-                        Intent i = new Intent();
-                        i.setData(url);
-                        i.setAction(Intent.ACTION_VIEW);
-                        startActivity(i);
+                        if(urlVerification(level)) {
+                            Uri url = Uri.parse(level);
+                            Intent i = new Intent();
+                            i.setData(url);
+                            i.setAction(Intent.ACTION_VIEW);
+                            startActivity(i);
+                        } else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Sorry! you can't open this plan now");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            // message to admin to handle url error
+                            Log.d("LOGGER", "URL of Database Level 3 not added correctly");
+                        }
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -356,11 +449,20 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level1");
-                        Uri url = Uri.parse(level);
-                        Intent i = new Intent();
-                        i.setData(url);
-                        i.setAction(Intent.ACTION_VIEW);
-                        startActivity(i);
+                        if(urlVerification(level)) {
+                            Uri url = Uri.parse(level);
+                            Intent i = new Intent();
+                            i.setData(url);
+                            i.setAction(Intent.ACTION_VIEW);
+                            startActivity(i);
+                        } else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Sorry! you can't open this plan now");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            // message to admin to handle url error
+                            Log.d("LOGGER", "URL of Web Level 1 not added correctly");
+                        }
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -380,11 +482,20 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level2");
-                        Uri url = Uri.parse(level);
-                        Intent i = new Intent();
-                        i.setData(url);
-                        i.setAction(Intent.ACTION_VIEW);
-                        startActivity(i);
+                        if(urlVerification(level)) {
+                            Uri url = Uri.parse(level);
+                            Intent i = new Intent();
+                            i.setData(url);
+                            i.setAction(Intent.ACTION_VIEW);
+                            startActivity(i);
+                        } else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Sorry! you can't open this plan now");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            // message to admin to handle url error
+                            Log.d("LOGGER", "URL of Web Level 2 not added correctly");
+                        }
 
                     } else {
                         Log.d("LOGGER", "No such document");
@@ -404,11 +515,20 @@ public class HomeActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level3");
-                        Uri url = Uri.parse(level);
-                        Intent i = new Intent();
-                        i.setData(url);
-                        i.setAction(Intent.ACTION_VIEW);
-                        startActivity(i);
+                        if(urlVerification(level)) {
+                            Uri url = Uri.parse(level);
+                            Intent i = new Intent();
+                            i.setData(url);
+                            i.setAction(Intent.ACTION_VIEW);
+                            startActivity(i);
+                        } else{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setMessage("Sorry! you can't open this plan now");
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                            // message to admin to handle url error
+                            Log.d("LOGGER", "URL of Web Level 3 not added correctly");
+                        }
 
                     } else {
                         Log.d("LOGGER", "No such document");
