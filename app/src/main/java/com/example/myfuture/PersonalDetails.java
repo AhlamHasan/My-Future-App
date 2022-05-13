@@ -60,14 +60,63 @@ public class PersonalDetails extends AppCompatActivity {
         this.finish();
     }
 
+    private boolean validatePhone(){
+        String Test = phone.getText().toString();
+        String check ="[05][0-9]+";
+        if(Test.isEmpty()){
+            phone.setError("phone number can not be empty");
+            return false;
+        }else if(Test.length()!=10){
+        phone.setError("Invalid phone number!");
+        return false;
+        } else if(Test.matches(check)==false){
+            phone.setError("Invalid phone number!");
+            return false;
+        }else {
+            phone.setError(null);
+            return true;
+        }
+    }
+
+    // check it later
+    private boolean validateAccountG(){
+        String Test = github.getText().toString();
+        String check ="[a-zA-Z][.]*";
+
+        if(Test.matches(check)==false){
+            github.setError("Invalid Account!");
+            return false;
+        }else {
+            github.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateAccountL(){
+        String Test = linkedin.getText().toString();
+        String check ="[a-zA-Z][.]+";
+
+        if(Test.matches(check)==false){
+            linkedin.setError("Invalid Account!");
+            return false;
+        }else {
+            linkedin.setError(null);
+            return true;
+        }
+    }
+
+
 
     public void saveInfo (View view){
-        firestore.collection("Users").document(Signup.UID).update("phone number",phone.getText().toString(),"linkedIn",linkedin.getText().toString(),"github",github.getText().toString());
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setMessage("Personal Details Saved");
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        if((validatePhone()==true) && (validateAccountG()==true) && (validateAccountL()==true) ) {
+            firestore.collection("Users").document(Signup.UID).update("phone number",phone.getText().toString(),"linkedIn",linkedin.getText().toString(),"github",github.getText().toString());
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+            builder.setMessage("Personal Details Saved");
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
 
     }
 }
