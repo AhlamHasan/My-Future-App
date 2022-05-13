@@ -81,7 +81,7 @@ public class PersonalDetails extends AppCompatActivity {
     // check it later
     private boolean validateAccountG(){
         String Test = github.getText().toString();
-        String check ="[a-zA-Z][.]*";
+        String check ="[a-zA-Z].+";
 
         if(Test.matches(check)==false){
             github.setError("Invalid Account!");
@@ -94,7 +94,7 @@ public class PersonalDetails extends AppCompatActivity {
 
     private boolean validateAccountL(){
         String Test = linkedin.getText().toString();
-        String check ="[a-zA-Z][.]+";
+        String check ="[a-zA-Z].+";
 
         if(Test.matches(check)==false){
             linkedin.setError("Invalid Account!");
@@ -108,6 +108,8 @@ public class PersonalDetails extends AppCompatActivity {
 
 
     public void saveInfo (View view){
+
+
 
         if((validatePhone()==true) && (validateAccountG()==true) && (validateAccountL()==true) ) {
             firestore.collection("Users").document(Signup.UID).update("phone number",phone.getText().toString(),"linkedIn",linkedin.getText().toString(),"github",github.getText().toString());
