@@ -109,15 +109,15 @@ public class PersonalDetails extends AppCompatActivity {
 
     public void saveInfo (View view){
 
-
-
-        if((validatePhone()==true) && (validateAccountG()==true) && (validateAccountL()==true) ) {
-            firestore.collection("Users").document(Signup.UID).update("phone number",phone.getText().toString(),"linkedIn",linkedin.getText().toString(),"github",github.getText().toString());
-            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-            builder.setMessage("Personal Details Saved");
-            AlertDialog dialog = builder.create();
-            dialog.show();
+        if(!validatePhone() | !validateAccountG() | !validateAccountL() ){
+            return;
         }
+        firestore.collection("Users").document(Signup.UID).update("phone number",phone.getText().toString(),"linkedIn",linkedin.getText().toString(),"github",github.getText().toString());
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+        builder.setMessage("Personal Details Saved");
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
 
 
     }
