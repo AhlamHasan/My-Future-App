@@ -197,6 +197,10 @@ public class addNewEdu extends BottomSheetDialogFragment {
                 String grade = setGrade.getText().toString();
                 String yearDate = setYear.getText().toString();
 
+                if(!validateUni() | !validateDeg() ){
+                    return;
+                }
+
                 if(finalIsUpdate){
                     firestore.collection("Education").document(bundle.getString("id")).update("degree",degree,"grade",grade,"university",uni,"year",yearDate);
 
@@ -247,6 +251,33 @@ public class addNewEdu extends BottomSheetDialogFragment {
         );
 
     }
+
+    private boolean validateUni(){
+        String Test = setUni.getText().toString();
+        String check ="[a-zA-Z].+";
+
+        if(Test.matches(check)==false){
+            setUni.setError("Invalid Input!");
+            return false;
+        }else {
+            setUni.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateDeg(){
+        String Test = setDegree.getText().toString();
+        String check ="[a-zA-Z].+";
+
+        if(Test.matches(check)==false){
+            setDegree.setError("Invalid Input!");
+            return false;
+        }else {
+            setDegree.setError(null);
+            return true;
+        }
+    }
+
 
     @Override
     public void onAttach(@NonNull Context context) {

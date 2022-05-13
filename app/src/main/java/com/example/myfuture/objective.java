@@ -62,7 +62,25 @@ public class objective extends AppCompatActivity {
         this.finish();
     }
 
+    private boolean validateObj(){
+        String Test = obj.getText().toString();
+        String check ="[a-zA-Z].+";
+
+        if(Test.matches(check)==false){
+            obj.setError("Invalid Input!");
+            return false;
+        }else {
+            obj.setError(null);
+            return true;
+        }
+    }
+
     public void saveObj (View view){
+
+        if(!validateObj()){
+            return;
+        }
+
         firestore.collection("Users").document(Signup.UID).update("objective",obj.getText().toString());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());

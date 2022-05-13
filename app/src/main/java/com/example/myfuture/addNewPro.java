@@ -171,6 +171,10 @@ public class addNewPro extends BottomSheetDialogFragment {
                                         String describe = setDescribe.getText().toString();
                                         String yearDate = setYear.getText().toString();
 
+                                        if(!validateTitle() | !validateDes() ){
+                                            return;
+                                        }
+
                                         if(finalIsUpdate){
                                             firestore.collection("Projects").document(bundle.getString("id")).update("title",title,"description",describe,"date",yearDate);
 
@@ -218,6 +222,32 @@ public class addNewPro extends BottomSheetDialogFragment {
                                 }
         );
 
+    }
+
+    private boolean validateTitle(){
+        String Test = setTitle.getText().toString();
+        String check ="[a-zA-Z].+";
+
+        if(Test.matches(check)==false){
+            setTitle.setError("Invalid Input!");
+            return false;
+        }else {
+            setTitle.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateDes(){
+        String Test = setDescribe.getText().toString();
+        String check ="[a-zA-Z].+";
+
+        if(Test.matches(check)==false){
+            setDescribe.setError("Invalid Input!");
+            return false;
+        }else {
+            setDescribe.setError(null);
+            return true;
+        }
     }
 
     @Override

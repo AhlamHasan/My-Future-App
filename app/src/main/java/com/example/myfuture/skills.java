@@ -62,7 +62,25 @@ public class skills extends AppCompatActivity {
         this.finish();
     }
 
+    private boolean validateSkill(){
+        String Test = skill.getText().toString();
+        String check ="[a-zA-Z].+";
+
+        if(Test.matches(check)==false){
+            skill.setError("Invalid Input!");
+            return false;
+        }else {
+            skill.setError(null);
+            return true;
+        }
+    }
+
     public void saveSkills (View view){
+
+        if (!validateSkill()){
+            return;
+        }
+
         firestore.collection("Users").document(Signup.UID).update("skills",skill.getText().toString());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());

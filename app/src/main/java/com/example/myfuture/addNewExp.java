@@ -225,6 +225,10 @@ public class addNewExp extends BottomSheetDialogFragment {
                                         String startDate = setStartYear.getText().toString();
                                         String endDate = setEndYear.getText().toString();
 
+                                        if(!validateComp() | !validateJob() ){
+                                            return;
+                                        }
+
                                         if(finalIsUpdate){
                                             firestore.collection("Experiences").document(bundle.getString("id")).update("company",company,"job title",job,"description",jobDes,"start date",startDate,"end date",endDate);
 
@@ -238,7 +242,7 @@ public class addNewExp extends BottomSheetDialogFragment {
                                         }else {
 
                                             if (company.isEmpty() || job.isEmpty() || startDate.equals("Set start date") || endDate.equals("Set end date") ) {
-                                                Toast.makeText(context, "Empty education NOT allowed !!", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(context, "Empty experience NOT allowed !!", Toast.LENGTH_SHORT).show();
                                             } else {
 
                                                 Map<String, Object> expMap = new HashMap<>();
@@ -273,6 +277,33 @@ public class addNewExp extends BottomSheetDialogFragment {
                                 }
         );
 
+    }
+
+
+    private boolean validateJob(){
+        String Test = setJob.getText().toString();
+        String check ="[a-zA-Z].+";
+
+        if(Test.matches(check)==false){
+            setJob.setError("Invalid Input!");
+            return false;
+        }else {
+            setJob.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateComp(){
+        String Test = setComp.getText().toString();
+        String check ="[a-zA-Z].+";
+
+        if(Test.matches(check)==false){
+            setComp.setError("Invalid Input!");
+            return false;
+        }else {
+            setComp.setError(null);
+            return true;
+        }
     }
 
     @Override
