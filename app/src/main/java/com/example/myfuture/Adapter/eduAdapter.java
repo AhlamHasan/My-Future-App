@@ -45,13 +45,6 @@ public class eduAdapter extends RecyclerView.Adapter<eduAdapter.MyViewHolder> {
         return new MyViewHolder(view);
     }
 
-    public void deleteEdu(int position){
-        eduModel eModel = eduList.get(position);
-        firestore.collection("Education").document(eModel.eduID).delete();
-        eduList.remove(position);
-        notifyItemRemoved(position);
-    }
-
     public void editEdu(int position){
         eduModel eModel = eduList.get(position);
 
@@ -67,6 +60,13 @@ public class eduAdapter extends RecyclerView.Adapter<eduAdapter.MyViewHolder> {
         addEdu.show(activity.getSupportFragmentManager() , addEdu.getTag());
 
 
+    }
+
+    public void deleteEdu(int position){
+        eduModel eModel = eduList.get(position);
+        firestore.collection("Education").document(eModel.eduID).delete();
+        eduList.remove(position);
+        notifyItemRemoved(position);
     }
 
     @Override

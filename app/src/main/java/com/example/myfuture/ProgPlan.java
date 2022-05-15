@@ -86,14 +86,13 @@ public class ProgPlan extends Fragment {
     }
 
     public void retrieveData() {
-
-        firestore.collection("Users").document(Signup.UID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        firestore.collection("Users").document(Signup.UID).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
-
                         int p1 = document.getLong("programming1-ch").intValue();
                         int p2 = document.getLong("programming2-ch").intValue();
                         int p3 = document.getLong("programming3-ch").intValue();
@@ -101,39 +100,13 @@ public class ProgPlan extends Fragment {
                             cb1.setChecked(true);
                             cb1.setEnabled(false);
 
-                            if (p2 == 1) {
-                                cb2.setChecked(true);
-                                cb2.setEnabled(false);
-                            } else{
-                                cb2.setChecked(false);
-                                if (p1 == 1) {
-                                    cb2.setEnabled(true);
-                                }
-
-                            }
-
-                            if (p3 == 1) {
-                                cb3.setChecked(true);
-                                cb3.setEnabled(false);
-                            } else{
-                                cb3.setChecked(false);
-                                if (p2 == 1) {
-                                    cb3.setEnabled(true);
-                                }
-
-                            }
-                        }
-
-                    }
-                    else {
-                        Log.d("LOGGER", "No such document");
-                    }
+                            if (p2 == 1) { cb2.setChecked(true); cb2.setEnabled(false); }
+                            else{ cb2.setChecked(false); if (p1 == 1) { cb2.setEnabled(true); } }
+                            if (p3 == 1) { cb3.setChecked(true); cb3.setEnabled(false); }
+                            else{ cb3.setChecked(false); if (p2 == 1) { cb3.setEnabled(true); } } }}
+                    else { Log.d("LOGGER", "No such document"); }
                 } else {
-                    Log.d("LOGGER", "get failed with ", task.getException());
-                }
-            }
-        });
-    }
+                    Log.d("LOGGER", "get failed with ", task.getException()); }}});}
 
 
     @Override
@@ -146,24 +119,22 @@ public class ProgPlan extends Fragment {
         cb3 = (CheckBox) view.findViewById(R.id.cb3);
 
         retrieveData();
-
          cb1.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setTitle("Certification Credential");
                 final EditText input = new EditText(view.getContext());
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 builder.setView(input);
-
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if(!input.getText().toString().equals("")) {
                             System.out.println("input "+input.getText().toString());
-
-                            firestore.collection("Users").document(Signup.UID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            firestore.collection("Users").document(Signup.UID).get()
+                                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
+                                    {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                     if (task.isSuccessful()) {
@@ -172,18 +143,17 @@ public class ProgPlan extends Fragment {
                                             int p = document.getLong("Point").intValue();
                                             AccountFragment.points = p;
                                             AccountFragment.points+=20;
-                                            firestore.collection("Users").document(Signup.UID).update("Point",AccountFragment.points);
+                                            firestore.collection("Users").
+                                                    document(Signup.UID)
+                                                    .update("Point",AccountFragment.points);
 
-                                        } else {
-                                            Log.d("LOGGER", "No such document");
-                                        }
-                                    } else {
-                                        Log.d("LOGGER", "get failed with ", task.getException());
-                                    }
-                                }
-                            });
+                                        } else { Log.d("LOGGER", "No such document"); }
+                                    } else { Log.d("LOGGER", "get failed with ",
+                                            task.getException());
+                                    } } });
 
-                            firestore.collection("Users").document(Signup.UID).update("programming1-ch",1);
+                            firestore.collection("Users")
+                                    .document(Signup.UID).update("programming1-ch",1);
                             cb1.setChecked(true);
                             cb1.setEnabled(false);
                             cb2.setEnabled(true);
@@ -192,26 +162,18 @@ public class ProgPlan extends Fragment {
                             AlertDialog dialog = builder.create();
                             dialog.show();
                         }else{
-                            firestore.collection("Users").document(Signup.UID).update("programming1-ch",0);
+                            firestore.collection("Users").document(Signup.UID)
+                                    .update("programming1-ch",0);
                             cb1.setChecked(false);
-                            cb2.setEnabled(false);
-
-                        }
-                    }
-                });
+                            cb2.setEnabled(false); } }});
 
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         cb1.setChecked(false);
                         cb2.setEnabled(false);
-                        dialogInterface.cancel();
-                    }
-                });
-
-                builder.show();
-             }
-         });
+                        dialogInterface.cancel(); }});
+                builder.show(); }});
 
          cb2.setOnClickListener(new View.OnClickListener() {
             @Override

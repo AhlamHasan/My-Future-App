@@ -145,7 +145,8 @@ public class Template extends AppCompatActivity {
                             isend_date =  documentChange.getDocument().getData().get("end date").toString();
                             isstart_date =  documentChange.getDocument().getData().get("start date").toString();
                             isjob =  documentChange.getDocument().getData().get("job title").toString();
-                            Experience_detail.setText(iscompany + "  " + isdescription2+ "\n" + isend_date + " " +isstart_date+ " \n " +isjob);
+                            Experience_detail.setText(iscompany + "  " + isdescription2+ "\n"
+                                    + isend_date + " " +isstart_date+ " \n " +isjob);
                         }
                     }
                 });

@@ -7,8 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -41,7 +45,18 @@ public class Signup extends AppCompatActivity {
         Email=findViewById(R.id.Email_su_Container);
         Password=findViewById(R.id.Password_su_Container);
 
+    }
 
+    public String hashGenerator(String password) throws NoSuchAlgorithmException,
+            InvalidKeySpecException {
+        String salt = "Fg$234&344GGGHKL#rrt";
+        String hash;
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes()
+                , 500, 128);
+        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        byte[] hashBytes = factory.generateSecret(spec).getEncoded();
+        hash = new String(hashBytes);
+        return hash;
     }
 
     public void callSignInScrean (View view){
@@ -60,12 +75,17 @@ public class Signup extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     if(task.getResult().isEmpty()){
-                        SaveUser();
+                        try {
+                            SaveUser();
+                        } catch (NoSuchAlgorithmException e) {
+                            e.printStackTrace();
+                        } catch (InvalidKeySpecException e) {
+                            e.printStackTrace();
+                        }
                     }else{
                         Email.setError("Email account is exist ");
                         Log.d(TAG, "Email account is already exist ");
                     }
-
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -122,13 +142,14 @@ public class Signup extends AppCompatActivity {
 
     private boolean validatePassword(){
         strPassword=Password.getEditText().getText().toString().trim();
-        String checkPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
-
+        String checkPassword =
+                "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
         if(strPassword.isEmpty()){
             Password.setError("Field can not be empty");
             return false;
         } else if(!strPassword.matches((checkPassword))){
-            Password.setError("Password should contain 8 characters,at least 1 digit, 1 special character");
+            Password.setError("Password should contain 8 characters" +
+                    ",at least 1 digit, 1 special character");
             return false;
         } else {
             Password.setError(null);
@@ -137,13 +158,13 @@ public class Signup extends AppCompatActivity {
         }
     }
 
-    private void SaveUser(){
+    private void SaveUser() throws NoSuchAlgorithmException, InvalidKeySpecException {
 
         Map<String, Object> dataToSave = new HashMap<>();
         dataToSave.put("First Name", First_name);
         dataToSave.put("Last Name", Last_name);
         dataToSave.put("Email", strEmail);
-        dataToSave.put("Password", strPassword);
+        dataToSave.put("Password", hashGenerator(strPassword).toString());
         dataToSave.put("Point", 0);
         dataToSave.put("programming1-ch", 0);
         dataToSave.put("programming2-ch", 0);

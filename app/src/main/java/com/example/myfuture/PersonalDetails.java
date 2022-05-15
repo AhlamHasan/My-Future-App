@@ -27,34 +27,26 @@ public class PersonalDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_details);
-
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone);
         linkedin = findViewById(R.id.linkedin);
         github = findViewById(R.id.github);
-
-        firestore.collection("Users").document(Signup.UID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        firestore.collection("Users").document(Signup.UID).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document != null) {
-                        name.setText(document.getString("First Name")+" "+document.getString("Last Name"));
+                        name.setText(document.getString("First Name")+" "
+                                +document.getString("Last Name"));
                         email.setText(document.getString("Email"));
                         phone.setText(document.getString("phone number"));
                         linkedin.setText(document.getString("linkedIn"));
                         github.setText(document.getString("github"));
-                    } else {
-                        Log.d("LOGGER", "No such document");
-                    }
-                } else {
-                    Log.d("LOGGER", "get failed with ", task.getException());
-                }
-            }
-        });
-
-    }
+                    } else { Log.d("LOGGER", "No such document"); }
+                } else { Log.d("LOGGER", "get failed with ", task.getException()); } }});}
 
     public void returnCV (View view){
         this.finish();
@@ -77,8 +69,6 @@ public class PersonalDetails extends AppCompatActivity {
             return true;
         }
     }
-
-    // check it later
     private boolean validateAccountG(){
         String Test = github.getText().toString();
         String check ="[a-zA-Z].+";
@@ -112,7 +102,10 @@ public class PersonalDetails extends AppCompatActivity {
         if(!validatePhone() | !validateAccountG() | !validateAccountL() ){
             return;
         }
-        firestore.collection("Users").document(Signup.UID).update("phone number",phone.getText().toString(),"linkedIn",linkedin.getText().toString(),"github",github.getText().toString());
+        firestore.collection("Users").document(Signup.UID)
+                .update("phone number",phone.getText().toString()
+                        ,"linkedIn",linkedin.getText().toString()
+                        ,"github",github.getText().toString());
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         builder.setMessage("Personal Details Saved");
         AlertDialog dialog = builder.create();

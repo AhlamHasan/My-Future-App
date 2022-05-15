@@ -22,7 +22,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.util.List;
+
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -45,17 +52,27 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
+    public String hashGenerator(String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        String salt = "Fg$234&344GGGHKL#rrt";
+        String hash;
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes(), 500, 128);
+        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        byte[] hashBytes = factory.generateSecret(spec).getEncoded();
+        hash = new String(hashBytes);
+        return hash;
+    }
+
     public void callSignUpScrean (View view){
         Intent i=new Intent(SignInActivity.this,Signup.class);
         startActivity(i);
     }
 
-    public void callHomeScreen(View view) {
+    public void callHomeScreen(View view) throws NoSuchAlgorithmException, InvalidKeySpecException {
         if(!validateEmail() | !validatePassword()){
             return;
         }
 
-        db.collection("Users").whereEqualTo("Email", strEmail).whereEqualTo("Password", strPassword).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("Users").whereEqualTo("Email", strEmail).whereEqualTo("Password",  hashGenerator(strPassword).toString()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if(queryDocumentSnapshots.isEmpty()){

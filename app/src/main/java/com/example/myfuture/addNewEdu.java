@@ -202,7 +202,9 @@ public class addNewEdu extends BottomSheetDialogFragment {
                 }
 
                 if(finalIsUpdate){
-                    firestore.collection("Education").document(bundle.getString("id")).update("degree",degree,"grade",grade,"university",uni,"year",yearDate);
+                    firestore.collection("Education").document(bundle.getString("id"))
+                            .update("degree",degree,"grade",grade
+                                    ,"university",uni,"year",yearDate);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                     builder.setMessage("Education Updated");
@@ -212,36 +214,29 @@ public class addNewEdu extends BottomSheetDialogFragment {
                     getActivity().finish();
 
                 }else {
-
-                    if (degree.isEmpty() || uni.isEmpty() || grade.isEmpty() || yearDate.equals("Set the graduation date")) {
-                        Toast.makeText(context, "Empty education NOT allowed !!", Toast.LENGTH_SHORT).show();
-                        System.out.println(yearDate);
-                    } else {
-
-                        Map<String, Object> eduMap = new HashMap<>();
-
+                    if (degree.isEmpty() || uni.isEmpty() || grade.isEmpty() ||
+                            yearDate.equals("Set the graduation date")) {
+                        Toast.makeText(context, "Empty education NOT allowed !!"
+                                , Toast.LENGTH_SHORT).show();
+                    } else { Map<String, Object> eduMap = new HashMap<>();
                         eduMap.put("degree", degree);
                         eduMap.put("university", uni);
                         eduMap.put("grade", grade);
                         eduMap.put("year", yearDate);
                         eduMap.put("User_ID", Signup.UID);
-                        //eduMap.put("time", FieldValue.serverTimestamp());
-
-                        firestore.collection("Education").add(eduMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                        firestore.collection("Education").add(eduMap)
+                                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                             @Override
                             public void onComplete(@NonNull Task<DocumentReference> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(context, "Education save", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
+                                if (task.isSuccessful()) { Toast.makeText(context, "Education save"
+                                        , Toast.LENGTH_SHORT).show();
+                                } else { Toast.makeText(context, task.getException().getMessage()
+                                        , Toast.LENGTH_SHORT).show(); } }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                            }});
 
                     }
                 }

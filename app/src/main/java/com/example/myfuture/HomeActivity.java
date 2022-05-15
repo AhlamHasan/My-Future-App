@@ -114,7 +114,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void progPlans (View view){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProgPlan()).commit();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, new ProgPlan()).commit();
 
     }
 
@@ -129,11 +130,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void prog1 (View view){
-        firestore.collection("plans").document("programming").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        firestore.collection("plans").document("programming")
+                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
+                if (task.isSuccessful()) { DocumentSnapshot document = task.getResult();
                     if (document != null) {
                         String level = document.getString("level1");
                         if(urlVerification(level)) {
@@ -143,23 +144,15 @@ public class HomeActivity extends AppCompatActivity {
                             i.setAction(Intent.ACTION_VIEW);
                             startActivity(i);
                         } else{
-                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            AlertDialog.Builder builder= new AlertDialog.Builder(view.getContext());
                             builder.setMessage("Sorry! you can't open this plan now");
                             AlertDialog dialog = builder.create();
                             dialog.show();
                             // message to admin to handle url error
                             Log.d("LOGGER", "URL of Programming Level 1 not added correctly");
                         }
-
-                    } else {
-                        Log.d("LOGGER", "No such document");
-                    }
-                } else {
-                    Log.d("LOGGER", "get failed with ", task.getException());
-                }
-            }
-        });
-    }
+                    } else { Log.d("LOGGER", "No such document"); }
+                } else { Log.d("LOGGER", "get failed with ", task.getException()); } } }); }
 
     public void prog2 (View view){
         firestore.collection("plans").document("programming").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
