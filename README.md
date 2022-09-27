@@ -1,4 +1,8 @@
 <h1 align="center">Hi 👋, I'm Nouf Alotaibi</h1>
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=noufalotaibi3&label=Profile%20views&color=0e75b6&style=flat" alt="noufalotaibi3" /> </p>
+
+<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=noufalotaibi3" alt="noufalotaibi3" /></a> </p>
+
 - 🔭 I’m currently working on [MyFuture App](https://github.com/AhlamHasan/My-Future-App)
 
 - 🌱 I’m currently learning **Android**
