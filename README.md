@@ -1,19 +1,39 @@
-<h1 align="center">Hi 👋, I'm Nouf Alotaibi</h1>
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=noufalotaibi3&label=Profile%20views&color=0e75b6&style=flat" alt="noufalotaibi3" /> </p>
+# My Future App 
+ Academic Student Skills planner to improve students' academic outcomes, Our main objective is to create a mobile application that can elevate technical students' skills to a new level by enhancing their technical skills and assisting them to engage in the job market efficiently.
+the application will give technical students the chance to preparing for getting professional certifications and making real technical projects through developing a skills plan roadmap for them to follow in accordance with their study schedule.
+* skills plan roadmap
+* Motivational Points
+* Motivational and Remainder Notifications
+* Recommendations for the students so that they interact with the workforce efficient
+* Opportunity to gather all the activities or events that they enrolled in through their bachelor study in a CV template
 
-- 🔭 I’m currently working on [MyFuture App](https://github.com/AhlamHasan/My-Future-App)
 
-- 🌱 I’m currently learning **Android**
+> We aim to reduce the feeling of being lost when university student chooses their career path.
 
-- 💬 Ask me about **JAVA**
+## fields 
+* programming
+* networks
+* databases
+* web development
 
-- 📫 How to reach me **noufalotaibi477@gmail.com**
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-<a href="https://twitter.com/nx11f" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="nx11f" height="30" width="40" /></a>
-<a href="https://linkedin.com/in/nouf-m-alotaibi" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="nouf-m-alotaibi" height="30" width="40" /></a>
-</p>
+## language
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://developer.android.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original-wordmark.svg" alt="android" width="40" height="40"/> </a> <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> </p>
+ English
+ 
+ ## Built With
+
+* [Firebase](http://www.dropwizard.io/1.0.2/docs/) - Cloud Firestore,Firebase Authentication
+* [Android Studio](https://developer.android.com/studio) - Integrated development environment for the Android platform
+
+ 
+## Authors
+
+* **wesayef** - [vist](https://github.com/wesayef)
+* **AhlamHasan**  - [vist](https://github.com/AhlamHasan)
+* **Noufalotaibi** -  [vist](https://github.com/Noufalotaibi3)
+* **GhaidaKS** - [vist](https://github.com/GhaidaKS)
+
+## note:
+* Demo for the app : https://drive.google.com/file/d/1pUZuxBz1zoaxLG-aMc5neqIkoBQyDafM/view?usp=drivesdk
+
